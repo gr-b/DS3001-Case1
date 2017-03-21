@@ -32,7 +32,8 @@ for line in tweetfile:
         # This gives us a weird format.
         #if len(m) >0:
         data = clean_emoji_data(emoji_data)
-        print data
+        print data[0]
+
         numTweets += 1
     except:
         continue

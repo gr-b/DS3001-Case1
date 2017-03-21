@@ -32,7 +32,7 @@ def get_oauth_login():
 
 auth = get_oauth_login()
 twitter_stream = twitter.TwitterStream(auth=get_oauth_login())
-iterator = twitter_stream.statuses.sample()
+iterator = twitter_stream.statuses.sample(q='')
 #twitter_obj = twitter.Twitter(auth=auth)
 #iterator = twitter_obj.search.tweets(count=1000)
 
