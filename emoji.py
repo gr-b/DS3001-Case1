@@ -11,9 +11,10 @@ def clean_emoji_data(data):
                 flat_list += item
     return flat_list
 
-tweetfile = open("tweets", "r")
+tweetfile = open("tweetswithrts", "r")
 
 numTweets = 0
+infoArray = []
 for line in tweetfile:
     #print line.strip()
     tweet = json.loads(line.strip())
@@ -32,11 +33,21 @@ for line in tweetfile:
         # This gives us a weird format.
         #if len(m) >0:
         data = clean_emoji_data(emoji_data)
-        print data[0]
+
+        data_entry = [data]
+        if tweet.has_key('retweeted_status'):
+            count = tweet['retweet_count']
+        else:
+            count = 0
+            
+        
+        infoArray += [[data, count]]
 
         numTweets += 1
     except:
         continue
-    
+
+for info in infoArray:
+    print info
 tweetfile.close()
 print("File reading complete. " + str(numTweets) + " tweets read.")
