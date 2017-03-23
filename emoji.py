@@ -48,9 +48,10 @@ for line in tweetfile:
         continue
 
 for info in infoArray:
+    print info
     emojis = info[0]
     retweets = info[1]
-    emojiCount = str(len(emojis))
+    emojiCount = str((len(emojis)))
     emojidata.write(emojiCount + ' ')
     print emojiCount
     retweetCount = str(retweets)
