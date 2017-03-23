@@ -12,7 +12,7 @@ def clean_emoji_data(data):
     return flat_list
 
 tweetfile = open("tweetswithrts", "r")
-
+emojidata = open ("emojidata", "w")
 numTweets = 0
 infoArray = []
 for line in tweetfile:
@@ -48,6 +48,14 @@ for line in tweetfile:
         continue
 
 for info in infoArray:
-    print info
+    emojis = info[0]
+    retweets = info[1]
+    emojiCount = str(len(emojis))
+    emojidata.write(emojiCount + ' ')
+    print emojiCount
+    retweetCount = str(retweets)
+    emojidata.write(retweetCount + '\n')
+    print retweetCount
 tweetfile.close()
+emojidata.close()
 print("File reading complete. " + str(numTweets) + " tweets read.")
